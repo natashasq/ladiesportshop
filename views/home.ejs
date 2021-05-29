@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="/css/header.css" rel="stylesheet" />
+  <link href="/css/home.css" rel="stylesheet" />
+  <link href="/css/footer.css" rel="stylesheet" />
+  <link rel="shortcut icon" href="#" />
+  <title>LSShop</title>
+</head>
+
+<body>
+  <%- include('partials/header') %>
+  
+  <main class="item-list">
+    <div class="header__box-drop">
+      <div class="header__box sort-box">
+        <img src="/icons/sort-icon.svg" alt="item icon" class="header__icon sort" />
+        <button class="header__dropbtn">
+          <%= sort %>
+        </button>
+      </div>
+      <div class="header__dropdown-content sort-dropdown-content">
+        <a href="/?category=<%= category %>&name=item_name">Name ⬆</a>
+        <a href="/?category=<%= category %>&name=item_name&direction=DESC">Name ⬇</a>
+        <a href="/?category=<%= category %>&name=price">Price ⬆</a>
+        <a href="/?category=<%= category %>&name=price&direction=DESC">Price ⬇</a>
+      </div>
+    </div>
+    <section class="items">
+      <% if (allItems?.length) {allItems.map(item=> { %>
+        <section class="item">
+          <a class="item__link" href="/item/<%= item?.id %>">
+            <img class="item__img" alt="image of sport bag" src="<%= item?.item_img_url %>" />
+            <h2 class="item__name">
+              <%= item?.item_name %>
+            </h2>
+            <h2 class="item__price">
+              <%= item?.item_price%> RSD
+            </h2>
+            <div class="item__addToCart">
+              <a class="item__adToCart-link" href="/cart/<%= userId %>">
+                <img src="/icons/shopping-cart-rose.svg" alt="shoping cart icon" class="item__icon" />
+              </a>
+            </div>
+          </a>
+        </section>
+        <% })} %>
+          <section class="chat">
+            <div class="chat__popup" id="chat">
+              <form action="#" class="form-container">
+                <p class="chat__title">LadieSportShop Team</p>
+                <div class="chat__messages"></div>
+                <div class="chat__send-message">
+                  <input class="chat__input" type="text" placeholder="Type message" />
+                  <button type="submit" class="chat__btn-send">
+                    <img src="/icons/sendMessage-icon.svg" alt="send message icon" class="send-message__icon" />
+                  </button>
+                </div>
+              </form>
+            </div>
+            <button class="chat__open">
+              <img src="/icons/chat-icon.svg" alt="chat icon" class="chat__icon" />
+            </button>
+            <button class="chat__close" onclick="closeForm()">
+              <img src="/icons/x-icon.svg" alt="x icon" class="chat__icon" />
+            </button>
+          </section>
+    </section>
+  </main>
+  <%- include('partials/footer') %>
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"
+      integrity="sha384-DkkWv9oJFWLIydBXXjkBWnG1/fuVhw8YPBq37uvvD6WSYRFRqr21eY5Dg9ZhmWdy"
+      crossorigin="anonymous"></script>
+    <script src="/js/home.js"></script>
+    <script src="/js/socket-io.js"></script>
+</body>
+
+</html>

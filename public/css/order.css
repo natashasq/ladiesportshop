@@ -1,0 +1,134 @@
+body {
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+main {
+  margin: 150px auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cart {
+  background-color: #d9d9d9;
+  padding: 20px;
+  padding-bottom: 0;
+  margin-right: 30px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 3px 3px -2px rgb(0 0 0 / 20%), 0px 3px 4px 0px rgb(0 0 0 / 14%), 0px 1px 8px 0px rgb(0 0 0 / 12%);
+}
+
+.cart__icon {
+  height: 30px;
+}
+
+.cart__icon-box {
+  justify-self: flex-end;
+  align-self: flex-end;
+  position: relative;
+  text-decoration: none;
+  color: black;
+}
+
+.cart__icon-text {
+  visibility: hidden;
+  position: absolute;
+  text-align: center;
+  background-color: white;
+  padding: 5px;
+  bottom: 20px;
+  left: 20px;
+}
+
+.cart__icon-box:hover .cart__icon-text {
+  visibility: visible;
+}
+
+.cart__content {
+  display: flex;
+  align-items: center;
+}
+
+.cart__img {
+  height: 150px;
+  margin-bottom: 10px;
+}
+
+.cart__info {
+  margin-left: 30px;
+  font-size: 16px;
+}
+
+.cart__total {
+  font-size: 18px;
+  font-weight: bold;
+  align-self: flex-end;
+}
+
+.card__main {
+  display: flex;
+}
+
+.card__general-title, .card__address-title {
+  font-size: 20px;
+  color: #6a6a6a;
+}
+
+.order__generalInfo {
+  padding: 30px;
+  margin-left: 30px;
+  width: 600px;
+}
+
+.order__form {
+  display: flex;
+  justify-content: center;
+  font-size: 16px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.card__general, .card__address {
+  margin-right: 50px;
+}
+
+.card__input {
+  width: 200px;
+  border-radius: 25px;
+  outline: none;
+  border-color: transparent;
+  background-color: #fbd0d8;
+  color: black;
+  padding: 10px;
+  margin: 10px;
+}
+
+.card__btn {
+  background-color: #ff668c;
+  color: white;
+  width: 150px;
+  height: 50px;
+  border: none;
+  box-shadow: 0px 3px 3px -2px rgb(0 0 0 / 20%), 0px 3px 4px 0px rgb(0 0 0 / 14%), 0px 1px 8px 0px rgb(0 0 0 / 12%);
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.card__footer {
+  margin: 20px 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.cart__delivery {
+  align-self: flex-end;
+  margin: 0;
+}

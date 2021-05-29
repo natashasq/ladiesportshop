@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/css/header.css" rel="stylesheet">
+  <link href="/css/item.css" rel="stylesheet">
+  <link href="/css/footer.css" rel="stylesheet"
+  <link rel="shortcut icon" href="#">
+  <title>Document</title>
+</head>
+
+<body>
+  <%- include('partials/header') %>
+  <main>
+    <% if(messages?.info){ %>
+      <div class="flash__message">
+        <%= messages?.info %>
+      </div>
+      <% } %>
+    <section class="item">
+      <div class="item__img-box">
+        <button class="item__left-btn" id="left"><</button>
+            <% if(images?.length) { %>
+              <img class="item__img" alt="product image" src="<%= images[0]?.img_url %>"
+                data-images="<%= JSON.stringify(images) %>">
+              <% } %>
+              <button class="item__right-btn" id="right">></button>
+      </div>
+      <div class="item__info">
+        <h2 class="item__name">
+          <%= item?.item_name %>
+        </h2>
+        <h2 class="item__price">
+          <%= item?.item_price %> RSD
+        </h2>
+        <form action="/item/<%= item?.id %>" method="post" class="item__form">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+          <input type="hidden" name="item_name" value="<%= item?.item_name %>">
+          <input type="hidden" name="price" value="<%= parseInt(item?.item_price.replace(",","")) %>">
+          <input type="hidden" name="img_url" value="<%= item?.item_img_url %>">
+          <input type="hidden" name="category" value="<%= item?.category %>">
+          <% if(sizes?.length) { %>
+            <div class="item__size">
+              <p class="item__size-header">Pick a size:</p>
+              <% sizes?.map(size=> { %>
+                <input type="radio" name='size' value='<%= size?.item_size %>'>
+               <label class="item__size-label" for='size'><%= size?.item_size %></label></br>
+            <% }) %>
+          </div>
+          <% } %>
+            <div class="counter">
+              <span class="down" onClick='count(event, this, "down")'>-</span>
+              <input type="text" value="1" name="quantity" class="counter__input">
+              <span class="up" onClick='count(event, this, "up")'>+</span>
+            </div>
+            <script type="text/javascript">
+              function count(a, b, dir) {
+                let input = dir === "down" ? b.nextElementSibling : b.previousElementSibling;
+                let value = parseInt(input.value, 10);
+                value = isNaN(value) ? 0 : value;
+
+                if (dir === 'down' && value > 1) {
+                  value--;
+                }
+                if (dir === 'up' && value > 0) {
+                  value++;
+                }
+
+                input.value = value;
+              }
+            </script>
+            <div class="item__addToCart">
+              <button class="item__addToCart-text" id="addToCart_btn">
+                <p>Add to cart</p>
+                <img src="/icons/shopping-cart-white.svg" alt="shoping cart icon" class="item__addToCart-icon">
+              </button>
+            </div>
+        </form>
+      </div>
+    </section>
+  </main>
+  <%- include('partials/footer') %>
+</body>
+
+
+</html>

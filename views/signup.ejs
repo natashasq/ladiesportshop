@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/css/login.signup.css" rel="stylesheet">
+  <link rel="shortcut icon" href="#">
+  <title>Sign up</title>
+</head>
+<body>
+  <% if(messages.info){ %>
+    <div class="flash__message">
+      <%= messages.info %>
+    </div>
+    <% } %>
+      <header class="header"></header>
+      <div class="header__logo">
+        <h1 class="header__logo-name">LadieSportShop</h1>
+      </div>
+      </header>
+      <main>
+            <h1 class="title signup-title">Sign up</h1>
+            <form class="card signup-card" action="/signup" method="post">
+              <div class="card__info">
+                <div class="card__general">
+                  <h2 class="card__general-title">General information</h2>
+                  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                  <label class="card__label signup-label" for="user_name">First name:     
+                    <p class="card__required">*</p>
+                  </label><br>
+                  <input class="card__input signup-input" type="text" name="first_name"><br>
+                  <label class="card__label signup-label" for="user_name">Last name:
+                    <p class="card__required">*</p>
+                  </label><br>
+                  <input class="card__input signup-input" type="text" name="last_name"><br>
+                  <label class="card__label signup-label" for="email">Email:
+                    <p class="card__required">*</p>
+                  </label><br>
+                  <input class="card__input signup-input" type="text" id="email" name="email"><br>
+                  <label class="card__label signup-label" for="password">Password:
+                    <p class="card__required">*</p>
+                  </label><br>
+                  <input class="card__input signup-input" type="password" id="password" name="password"><br>
+                  <label class="card__label signup-label" for="confirm_password">Confirm password:
+                    <p class="card__required">*</p>
+                  </label><br>
+                  <input class="card__input signup-input" type="password" name="confirm_password"><br>
+                </div>
+                <div class="card__address">
+                  <h2 class="card__address-title">Address information</h2>
+                  <label class="card__label" for="user_name">Street name:</label><br>
+                  <input class="card__input signup-input" type="text" name="street_name"><br>
+                  <label class="card__label" for="user_name">Postal code:</label><br>
+                  <input class="card__input signup-input" type="text" name="postal_code"><br>
+                  <label class="card__label" for="user_name">City:</label><br>
+                  <input class="card__input signup-input" type="text" name="city"><br>
+                  <label class="card__label" for="user_name">Phone:</label><br>
+                  <input class="card__input signup-input" type="text" name="phone"><br>
+                </div>
+              </div>
+              <button class="card__btn" type="submit">Send</button>
+            </form>
+            <div class="footer">
+              <p>Already have the account? Log in <a class="footer__link" href="/login-view">here!</a></p>
+            </div>
+      </main>
+
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<header class="header">
+    <a href="/" class="header__link">
+      <h1 class="header__name">LadieSportShop</h1>
+    </a>
+    <h2 class="header__path <%= Boolean(!pagePath) && "noPath" %>"><%= pagePath %></h2>
+    <div class="header__box-drop">
+      <div class="header__box">
+        <img src="/icons/item-icon.svg" alt="item icon" class="header__icon" />
+        <button class="header__dropbtn">
+          <%= category || 'Products' %>
+        </button>
+      </div>
+      <div class="header__dropdown-content">
+        <a href="/">All products</a>
+        <a href="/?category=sneakers&name=item_name">Sneakers</a>
+        <a href="/?category=sweatsuit&name=item_name">Sweatsuit</a>
+        <a href="/?category=bags&name=item_name">Bags</a>
+      </div>
+    </div>
+    <div class="header__box">
+      <a class="header__link" id="cart_box" href="/cart/<%= userId %>">
+        <div class="header__count">
+          <%= count %>
+        </div>
+        <img src="/icons/shopping-cart-rose.svg" alt="shoping cart icon" class="header__icon" />
+        <p class="header__text">Cart</p>
+      </a>
+    </div>
+    <div class="header__box">
+      <% if(userId) { %>
+        <a class="header__link" href="/logout">
+          <img src="/icons/logout-icon.svg" alt="login icon" class="header__icon" />
+          <p class="header__text">Log out</p>
+        </a>
+        <% } else { %>
+          <a class="header__link" href="/login-view">
+            <img src="/icons/login-icon.svg" alt="login icon" class="header__icon" />
+            <p class="header__text">Log in</p>
+          </a>
+          <% } %>
+    </div>
+  </header>

@@ -1,0 +1,15 @@
+.footer {
+    margin: 100px auto 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer__text {
+    font-size: 14px;
+}
+
+.footer__hr {
+    width: 80%;
+}

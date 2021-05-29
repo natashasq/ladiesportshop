@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/css/header.css" rel="stylesheet" />
+    <link href="/css/cart.css" rel="stylesheet" />
+    <link href="/css/footer.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="#" />
+    <title>LSShop Cart</title>
+  </head>
+
+  <body>
+    <%- include('partials/header') %>
+
+    <main>
+      <section class="cart__main">
+        <% if (items?.length) {items.map(item=> { %>
+        <div class="cart__item">
+          <img src="<%= item.img_url %>" alt="item image" class="cart__img" />
+
+          <div class="cart__name-text">
+            <a class="cart__name-link" href="/item/<%= item.item_id %>">
+            <h1 class="cart__name-val"><%= item.item_name %></h1></a>
+          </div>
+          <% if(item.size) { %>
+          <div class="cart__info">
+            <p class="cart__text">Size</p>
+            <p class="cart__val"><%= item.size %></p>
+          </div>
+          <% }%>
+          <div class="cart__info">
+            <p class="cart__text">Quantity</p>
+            <p class="cart__val"><%= item.quantity %></p>
+          </div>
+          <div class="cart__info">
+            <p class="cart__text">Price</p>
+            <p class="cart__val"><%= item.price%> RSD</p>
+          </div>
+          <div class="cart__delete">
+            <form
+              action="/cart/<%= item.id %>"
+              method="post"
+              class="cart__link"
+            >
+              <img
+                src="/icons/delete-icon.svg"
+                alt="login icon"
+                class="cart__icon"
+              />
+              <input type="hidden" name="id" value="<%= item.id %>" />
+              <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+              <button type="submit" class="cart__btn">Delete</button>
+            </form>
+          </div>
+        </div>
+
+        <% })} %>
+        <div class="cart__total">
+          <p class="cart__text total-text">Total:</p>
+          <h1 class="cart__val total-val"><%= price %>.00 RSD</h1>
+        </div>
+        <div class="cart__btns">
+          <a href="/" class="cart__btn-silver">
+            <p class="cart__btn-wrap">Add more items</p>
+          </a>
+          <a href="/order/<%= userId %>" class="cart__btn-silver">
+            <p class="cart__btn-wrap rose">Confirm order</p>
+          </a>
+        </div>
+      </section>
+    </main>
+    <%- include('partials/footer') %>
+  </body>
+</html>

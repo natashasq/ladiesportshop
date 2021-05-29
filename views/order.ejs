@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/css/header.css" rel="stylesheet">
+  <link href="/css/order.css" rel="stylesheet">
+  <link href="/css/footer.css" rel="stylesheet">
+  <link rel="shortcut icon" href="#">
+  <title>Document</title>
+</head>
+
+<body>
+  <%- include('partials/header') %>
+  
+  <main>
+    <section class="order__generalInfo">
+      <form class="order__form" action="/order/<%= userId %>" method="post">
+        <div class="card__main">
+          <div class="card__general">
+            <h1 class="card__general-title">General information</h1>
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <label class="card__label" for="user_name">First name:</label><br>
+            <input class="card__input" type="text" name="first_name" placeholder="<%= user.first_name %>" 
+            value="<%= user.first_name %>"><br>
+            <label class="card__label" for="user_name">Last name:</label><br>
+            <input class="card__input" type="text" name="last_name" placeholder="<%= user.last_name %>"
+              value="<%= user.last_name %>"><br>
+            <label class="card__label" for="email">Email:</label><br>
+            <input class="card__input" type="text" id="email" name="email" placeholder="<%= user.email %>"
+              value="<%= user.email %>"><br>
+            <label class="card__label" for="user_name">Phone:</label><br>
+            <input class="card__input" type="text" name="phone" placeholder="<%= user.phone %>"
+              value="<%= user.phone %>"><br>
+          </div>
+          <div class="card__address">
+            <h2 class="card__address-title">Address information</h2>
+            <label class="card__label" for="user_name">Street name:</label><br>
+            <input class="card__input" type="text" name="street_name" placeholder="<%= user.street_name %>"
+              value="<%= user.street_name %>"><br>
+            <label class="card__label" for="user_name">Building no:</label><br>
+            <input class="card__input" type="text" name="building_no"><br>
+            <label class="card__label" for="user_name">Appartment no:</label><br>
+            <input class="card__input" type="text" name="appartment_no"><br>
+            <label class="card__label" for="user_name">Postal code:</label><br>
+            <input class="card__input" type="text" name="postal_code" placeholder="<%= user.postal_code %>"
+              value="<%= user.postal_code %>"><br>
+            <label class="card__label" for="user_name">City:</label><br>
+            <input class="card__input" type="text" name="city" placeholder="<%= user.city %>"
+              value="<%= user.city %>"><br>
+            <label class="card__label" for="user_name">Note:</label><br>
+            <input class="card__input" type="text" name="note"><br>
+          </div>
+        </div>
+        <button class="card__btn" type="submit">Complete</button>
+      </form>
+      <p>*Please, note that you can not change you email address, since you are using it for linking your account. If you want us to send you the invoice on different email address, please type the new emial address into the field "Note".</p>
+    </section></br>
+    <section class="cart">
+      <a href="/cart/<%= userId %>" class="cart__icon-box">
+        <img src="/icons/edit-icon.svg" alt="edit icon" class="cart__icon">
+        <span class="cart__icon-text">Edit</span>
+      </a>
+      <% if (items?.length) {items.map(item=> { %>
+        <div class="cart__content">
+          <img src="<%= item.img_url %>" alt="item image" class="cart__img">
+          <div class="cart__info">
+            <p class="cart_item-info">
+              <%= item.item_name %>
+            </p>
+            <p class="cart_item-info">Size: <%= item.size %>
+            </p>
+            <p class="cart_item-info">Price: <%= item.price %> RSD
+            </p>
+            <p class="cart_item-info">Quantity: <%= item.quantity %>
+            </p>
+          </div>
+        </div>
+        <% })} %>
+
+          <p class="cart__total">Total: <%= price %>.00 RSD</p>
+          <p class="cart__delivery">Delivery: 300.00 RSD</p>
+          <p class="cart__total">Total Price: <%= priceWithDelivery %>.00 RSD</p>
+    </section>
+  </main>
+  <%- include('partials/footer') %>
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/css/header.css" rel="stylesheet">
+  <link href="/css/download.css" rel="stylesheet">
+  <link href="/css/footer.css" rel="stylesheet">
+  <link rel="shortcut icon" href="#">
+  <title>Document</title>
+</head>
+
+<body>
+  <header class="header">
+    <h1 class="header__name margin">LadieSportShop</h1>
+  </header>
+  <h2 class="message">Thank you for the order!</h2>
+  <main>
+</section>
+<section class="cart">
+  <% if (items?.length) {items.map(item=> { %>
+    <div class="cart__content">
+      <img src="<%= item.img_url %>" alt="item image" class="cart__img">
+      <div class="cart__info">
+        <p class="cart_item-info">
+          <%= item.item_name %>
+        </p>
+        <p class="cart_item-info">Size: <%= item.size %>
+        </p>
+        <p class="cart_item-info">Price: <%= item.price %> RSD
+        </p>
+        <p class="cart_item-info">Quantity: <%= item.quantity %>
+        </p>
+        
+      </div>
+    </div>
+    <% })} %>
+    <p class="cart__total">Price: <%= price %>.00 RSD</p>
+</p>
+    <div class="cart__delivery">
+        <p class="cart__delivery-text">Delivery:</p>
+        <p class="cart__delivery-price">300 RSD</p>
+    </div>
+    <p class="cart__total">Total: <%= totalPrice %>.00 RSD</p>
+</p>
+</section>
+    <section class="order__generalInfo">
+      <div class="order__form">
+        <div class="card__general">
+          <h1 class="card__general-title">General information</h1>
+          <p class="card__label">First name:</p>
+          <p class="card__input"><%= user.first_name %></p>
+          <p class="card__label">Last name:</p>
+          <p class="card__input"><%= user.last_name %></p>
+          <p class="card__label">Email:</p>
+          <p class="card__input"><%= user.email %></p>
+          <p class="card__label">Phone:</p>
+          <p class="card__input"><%= user.phone %></p>
+        </div>
+        <div class="card__address">
+          <h2 class="card__address-title">Address information</h2>
+          <p class="card__label">Street name:</p>
+          <p class="card__input"><%= user.street_name %></p>
+          <p class="card__label">Building no:</p>
+          <p class="card__input"><%= user.building_no %></p>
+          <p class="card__label">Appartment no:</p>
+          <p class="card__input"><%= user.appartment_no %></p>
+          <p class="card__label">Postal code:</p>
+          <p class="card__input"><%= user.postal_code %></p>
+          <p class="card__label">City:</p>
+          <p class="card__input"><%= user.city %></p>
+          <p class="card__label">Note:</p>
+          <p class="card__input"><%= user.note %></p>
+        </div>
+    </div>
+      <div class="date">In Belgrade, <%= dateTime %></div>
+      <div class="additional-info">You can expect your order in next 3 days</div>
+      <div class="additional-info">For all questions and additional informations, please call +381604079000</div>
+  </main>
+  <%- include('partials/footer') %>
+</body>
+
+</html>

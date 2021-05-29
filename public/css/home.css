@@ -1,0 +1,272 @@
+body {
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+main {
+  position: relative;
+}
+
+/* main */
+
+.items {
+  display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: auto;
+}
+
+.item-list {
+  width: 1800px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-left: auto;
+  margin-top: 130px;
+}
+
+.sort-box {
+  height: 65px;
+}
+
+.sort-dropdown-content {
+  top: 60px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  height: 450px;
+  width: 450px;
+  padding: 10px;
+  text-align: center;
+}
+
+.item:hover {
+  box-shadow: 0px 3px 3px -2px rgb(0 0 0 / 20%), 0px 3px 4px 0px rgb(0 0 0 / 14%), 0px 1px 8px 0px rgb(0 0 0 / 12%);
+  cursor: pointer;
+}
+
+.item__link:-webkit-any-link {
+  text-decoration: none;
+}
+
+.item__img {
+  width: 300px;
+  height: 300px;
+}
+
+.item__name {
+  color: #6a6a6a;
+}
+
+.item__price {
+  font-size: 18px;
+  color: black;
+  margin: 5px auto 0 auto;
+}
+
+.item__icon {
+  width: 40px;
+  height: 40px;
+  margin: 5px auto 10px auto;
+}
+
+/* chat */
+
+/* Button used to open the chat form - fixed at the bottom of the page */
+
+.chat {
+  bottom: 5px;
+  position: fixed;
+  right: 5px;
+}
+
+.chat__open {
+  border: none;
+  cursor: pointer;
+  opacity: 0.7;
+  width: 100px;
+  height: 100px;
+  position: fixed;
+  bottom: 20px;
+  right: 10px;
+}
+
+.chat__close {
+  display: none;
+  border: none;
+  cursor: pointer;
+  opacity: 0.7;
+  width: 100px;
+  height: 100px;
+  margin-left: auto;
+}
+
+.chat__popup {
+  display: none;
+}
+
+.chat__icon {
+  width: 70px;
+}
+
+.chat__messages {
+  height: 300px;
+  background-color: #f2f2f2;
+  border-bottom: solid #ff668c;
+  overflow-y: scroll;
+}
+
+.chat__message-box {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.team-message-box {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.chat__message {
+  padding: 8px;
+    background-color: white;
+    width: fit-content;
+    margin: 0 10px;
+    margin-left: auto;
+    margin-bottom: 0;
+}
+.team-message {
+  margin: 10px;
+  margin-right: auto;
+  margin-bottom: 0;
+}
+
+.chat__message-sender {
+  padding: 8px;
+  width: fit-content;
+  margin: 0 10px;
+  margin-left: auto;
+  margin-top: 0;
+  color: #ff668c;
+  font-weight: bold;
+}
+
+.team-message-sender {
+  margin: 10px;
+  margin-top: 0;
+  color: #737373;
+}
+
+.chat__title {
+  margin: 0;
+  font-size: 20px;
+  background-color: white;
+  color: #ff668c;
+  padding: 5px;
+}
+
+.chat__input {
+  padding: 5px;
+  width: 293px;
+  height: 25px;
+  border: none;
+  margin-top: 5px;
+}
+
+.chat__send-message {
+  display: flex;
+}
+
+.chat__btn-send {
+  background-color: transparent;
+  border: none;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.chat__icon {
+  width: 70px;
+}
+
+.x-icon {
+  width: 70px;
+}
+
+.open-button {
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+/* The popup chat - hidden by default */
+
+.form-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width textarea */
+
+.form-container textarea {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+  resize: none;
+  min-height: 200px;
+}
+
+/* When the textarea gets focus, do something */
+
+.chat__input:focus {
+  background-color: #f2f2f2;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+
+/* .form-container .btn {
+
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+} */
+
+/* Add a red background color to the cancel button
+.form-container .cancel {
+  background-color: red;
+} */
+
+/* Add some hover effects to buttons */
+
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
